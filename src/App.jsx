@@ -13,6 +13,11 @@ const App = () => {
   const defaultItem = { title: "", description: "" };
   const [item, setItem] = useState(defaultItem);
 
+  const handleCloseModel = () => {
+    setAddItemModel(-1);
+    setItem(defaultItem);
+  };
+
   const handleChange = (e) =>
     setItem((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
@@ -24,8 +29,7 @@ const App = () => {
         return [...prev];
       });
 
-    setItem(defaultItem);
-    setAddItemModel(-1);
+    handleCloseModel();
   };
 
   const handleEdit = (itemId) => {
@@ -57,9 +61,9 @@ const App = () => {
             <AddEditItemModel
               {...{
                 item,
-                setAddItemModel,
                 handleChange,
                 addEditItem,
+                handleCloseModel,
               }}
             />
           )}

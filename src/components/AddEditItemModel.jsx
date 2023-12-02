@@ -3,9 +3,9 @@ import { useState } from "react";
 
 const AddEditItemModel = ({
   item,
-  setAddItemModel,
   handleChange,
   addEditItem,
+  handleCloseModel,
 }) => {
   const [errors, setErrors] = useState({ title: false, description: false });
 
@@ -25,7 +25,7 @@ const AddEditItemModel = ({
   return (
     <div
       className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm"
-      onClick={() => setAddItemModel(-1)}
+      onClick={handleCloseModel}
     >
       <div
         className="bg-background p-3 w-[min(90%,450px)] rounded-lg shadow-lg -translate-y-full animate-slide-in"
@@ -80,7 +80,7 @@ const AddEditItemModel = ({
             <button
               type="reset"
               className="px-5 py-2 bg-accent hover:bg-accent-600 text-white font-bold rounded-lg"
-              onClick={() => setAddItemModel(-1)}
+              onClick={handleCloseModel}
             >
               Close
             </button>
